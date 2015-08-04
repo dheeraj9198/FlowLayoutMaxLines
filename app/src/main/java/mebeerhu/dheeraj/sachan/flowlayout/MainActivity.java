@@ -43,7 +43,9 @@ public class MainActivity extends ActionBarActivity {
                     textView.setText(String.valueOf(System.currentTimeMillis()) + "*" + k);
                     textView.setPadding(10, 10, 10, 10);
                     flowLayout0.addView(textView);
-                }            }
+                }
+                flowLayout.setVisibility(View.GONE);
+            }
         });
     }
 
