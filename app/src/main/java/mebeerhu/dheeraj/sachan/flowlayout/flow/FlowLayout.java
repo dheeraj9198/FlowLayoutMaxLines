@@ -22,10 +22,23 @@ public class FlowLayout extends ViewGroup {
     public static final int LAYOUT_DIRECTION_LTR = 0;
     public static final int LAYOUT_DIRECTION_RTL = 1;
 
-    private int max = 0;
+    private int maxChildrenSupprotedDheeraj = 0;
+    private int maxLinesSupported = -1;
 
-    public int getMax() {
-        return max;
+    public void setMaxLinesSupported(int maxLinesSupported) {
+        if(maxLinesSupported > 0) {
+            if(maxLinesSupported == -1) {
+                this.maxLinesSupported = maxLinesSupported;
+            }else{
+                throw new RuntimeException("max lines supported cannot be reset");
+            }
+        }else{
+            throw new RuntimeException("max lines supported must be greater than 0");
+        }
+    }
+
+    public int getMaxChildrenSupprotedDheeraj() {
+        return maxChildrenSupprotedDheeraj;
     }
 
     private final LayoutConfiguration config;
@@ -83,9 +96,8 @@ public class FlowLayout extends ViewGroup {
                 lp.setLength(child.getMeasuredHeight());
                 lp.setThickness(child.getMeasuredWidth());
             }
-            int dheeraj = lines.size();
-            if (dheeraj <= 4) {
-                max = i;
+            if (maxLinesSupported !=  -1 && lines.size() <= maxLinesSupported) {
+                maxChildrenSupprotedDheeraj = i;
             }
             boolean newLine = lp.newLine || (modeLength != MeasureSpec.UNSPECIFIED && !currentLine.canFit(child));
             if (newLine) {

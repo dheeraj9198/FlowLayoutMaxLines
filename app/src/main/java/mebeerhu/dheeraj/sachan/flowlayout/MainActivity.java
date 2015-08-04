@@ -38,7 +38,7 @@ public class MainActivity extends ActionBarActivity {
             @Override
             public void onGlobalLayout() {
                 flowLayout.getViewTreeObserver().removeOnGlobalLayoutListener(this);
-                for (int k = 0; k < flowLayout.getMax()-1; k++) {
+                for (int k = 0; k < flowLayout.getMaxChildrenSupprotedDheeraj()-1; k++) {
                     TextView textView = new TextView(MainActivity.this);
                     float size = textView.getTextSize();
                     textView.setText(String.valueOf(System.currentTimeMillis()) + "*" + k);
