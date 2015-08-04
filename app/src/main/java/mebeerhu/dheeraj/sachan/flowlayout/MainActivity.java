@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import mebeerhu.dheeraj.sachan.flowlayout.flow.FlowLayout;
 
@@ -37,13 +38,22 @@ public class MainActivity extends ActionBarActivity {
             @Override
             public void onGlobalLayout() {
                 flowLayout.getViewTreeObserver().removeOnGlobalLayoutListener(this);
-                for (int k = 0; k < flowLayout.getMax(); k++) {
+                for (int k = 0; k < flowLayout.getMax()-1; k++) {
                     TextView textView = new TextView(MainActivity.this);
                     float size = textView.getTextSize();
                     textView.setText(String.valueOf(System.currentTimeMillis()) + "*" + k);
                     textView.setPadding(10, 10, 10, 10);
                     flowLayout0.addView(textView);
                 }
+                TextView textView = new TextView(MainActivity.this);
+                textView.setText("click");
+                textView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Toast.makeText(MainActivity.this,"clicked",Toast.LENGTH_LONG).show();
+                    }
+                });
+                flowLayout0.addView(textView);
                 flowLayout.setVisibility(View.GONE);
             }
         });
