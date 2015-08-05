@@ -22,12 +22,13 @@ public class FlowLayout extends ViewGroup {
     public static final int LAYOUT_DIRECTION_LTR = 0;
     public static final int LAYOUT_DIRECTION_RTL = 1;
 
-    private int maxChildrenSupprotedDheeraj = 0;
+    private int maxChildrenSupprotedDheeraj = -1;
+    private int childCount;
     private int maxLinesSupported = -1;
 
     public void setMaxLinesSupported(int maxLinesSupported) {
         if(maxLinesSupported > 0) {
-            if(maxLinesSupported == -1) {
+            if(this.maxLinesSupported == -1) {
                 this.maxLinesSupported = maxLinesSupported;
             }else{
                 throw new RuntimeException("max lines supported cannot be reset");
@@ -38,7 +39,7 @@ public class FlowLayout extends ViewGroup {
     }
 
     public int getMaxChildrenSupprotedDheeraj() {
-        return maxChildrenSupprotedDheeraj;
+        return maxChildrenSupprotedDheeraj == -1 ? childCount : maxChildrenSupprotedDheeraj;
     }
 
     private final LayoutConfiguration config;
@@ -75,6 +76,7 @@ public class FlowLayout extends ViewGroup {
         lines.add(currentLine);
 
         final int count = this.getChildCount();
+        childCount = count;
         for (int i = 0; i < count; i++) {
             final View child = this.getChildAt(i);
             if (child.getVisibility() == GONE) {

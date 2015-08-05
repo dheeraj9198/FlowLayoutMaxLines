@@ -24,6 +24,7 @@ public class MainActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         flowLayout = (FlowLayout) findViewById(R.id.flow);
+        flowLayout.setMaxLinesSupported(2);
         flowLayout0 = (FlowLayout) findViewById(R.id.flow0);
         for (int k = 0; k < 30; k++) {
             TextView textView = new TextView(this);

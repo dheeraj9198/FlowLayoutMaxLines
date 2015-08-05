@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/FlowLayout.iml" filepath="$PROJECT_DIR$/FlowLayout.iml" />
+      <module fileurl="file://$PROJECT_DIR$/FlowLayoutMaxLines.iml" filepath="$PROJECT_DIR$/FlowLayoutMaxLines.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>
 </project>
+
