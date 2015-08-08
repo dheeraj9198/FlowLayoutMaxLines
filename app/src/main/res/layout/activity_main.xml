@@ -2,20 +2,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".MainActivity">
 
     <mebeerhu.dheeraj.sachan.flowlayout.flow.FlowLayout
-        android:id="@+id/flow"
+        android:id="@+id/flow_layout"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal" />
 
-    <mebeerhu.dheeraj.sachan.flowlayout.flow.FlowLayout
-        android:id="@+id/flow0"
-        android:layout_width="fill_parent"
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal" />
-
+        android:text="FUCK THIS SHIT" />
 
 </LinearLayout>

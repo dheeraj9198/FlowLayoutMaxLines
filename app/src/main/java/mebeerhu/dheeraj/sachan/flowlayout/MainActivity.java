@@ -9,6 +9,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,18 +24,34 @@ public class MainActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        flowLayout = (FlowLayout) findViewById(R.id.flow);
-        flowLayout.setMaxLinesSupported(2);
+        Button button = (Button) findViewById(R.id.button);
+        flowLayout = (FlowLayout) findViewById(R.id.flow_layout);
+        flowLayout.setMaxLinesSupported(3);
+/*
         flowLayout0 = (FlowLayout) findViewById(R.id.flow0);
+*/
         for (int k = 0; k < 30; k++) {
             TextView textView = new TextView(this);
-            float size = textView.getTextSize();
             textView.setText(String.valueOf(System.currentTimeMillis()) + "_" + k);
             textView.setPadding(10, 10, 10, 10);
             flowLayout.addView(textView);
         }
 
-        ViewTreeObserver vto = flowLayout.getViewTreeObserver();
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                flowLayout.setMaxLinesSupported(Integer.MAX_VALUE);
+                for (int k = 0; k < 30; k++) {
+                    TextView textView = new TextView(MainActivity.this);
+                    textView.setText(String.valueOf(System.currentTimeMillis()) + "_" + k);
+                    textView.setPadding(10, 10, 10, 10);
+                    flowLayout.addView(textView);
+                }
+
+            }
+        });
+
+   /*     ViewTreeObserver vto = flowLayout.getViewTreeObserver();
         vto.addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
             @Override
             public void onGlobalLayout() {
@@ -57,7 +74,7 @@ public class MainActivity extends ActionBarActivity {
                 flowLayout0.addView(textView);
                 flowLayout.setVisibility(View.GONE);
             }
-        });
+        });*/
     }
 
     @Override
